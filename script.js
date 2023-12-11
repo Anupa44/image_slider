@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const copyTextButton = document.getElementById("copy-text-button");
+  const copyTextButton = document.getElementById("copy-icon");
 
   copyTextButton.addEventListener("click", function () {
     const textToCopy = document.querySelector(".upper-right-card p").innerText;
