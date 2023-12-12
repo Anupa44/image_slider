@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const copyTextButton = document.getElementById("copy-icon");
+  const zoomedImage = document.getElementById("zoomedImage");
+  const zoomInButton = document.getElementById("zoomIn");
+  const zoomOutButton = document.getElementById("zoomOut");
+
+  let zoomLevel = 1; // Initial zoom level
 
   copyTextButton.addEventListener("click", function () {
     const textToCopy = document.querySelector(".upper-right-card p").innerText;
@@ -13,6 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Optionally, provide feedback to the user
     alert("Text copied to clipboard!");
   });
+
+  zoomInButton.addEventListener("click", function () {
+    zoomLevel += 0.1;
+    applyZoom();
+  });
+
+  zoomOutButton.addEventListener("click", function () {
+    zoomLevel -= 0.1;
+    applyZoom();
+  });
+
+  function applyZoom() {
+    // Limit the zoom level between 0.5 and 2 for better control
+    zoomLevel = Math.min(Math.max(zoomLevel, 0.5), 2);
+    zoomedImage.style.transform = `scale(${zoomLevel})`;
+    zoomedImage.style.transformOrigin = 'top left'; // Set the transform origin to the top left corner
+  }
+
 
   const initSlider = () => {
     const imageList = document.querySelector(".slider-wrapper .image-list");
